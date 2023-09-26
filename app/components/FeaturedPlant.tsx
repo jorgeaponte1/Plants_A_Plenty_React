@@ -5,7 +5,7 @@ import Image from "next/image"
 const sansita_swashed = Sansita_Swashed({
   subsets: ["latin"],
   variable: "--font-sansita_swashed",
-  weight: ["400", "700", "800", "900"],
+  weight: ["400"],
 })
 
 function FeaturedPlant() {
@@ -16,7 +16,7 @@ function FeaturedPlant() {
     >
       <div className="lg:w-1/2 p-5">
         <p
-          className={`text-[60px] ${sansita_swashed.variable} font-sansita_swashed font-medium} mb-12 lg:text-left text-center`}
+          className={`text-[60px] ${sansita_swashed.variable} font-sansita_swashed font-medium mb-12 lg:text-left text-center`}
         >
           Plant of the Month
         </p>
@@ -34,15 +34,13 @@ function FeaturedPlant() {
         </p>
       </div>
       <div className="lg:w-1/2 p-5">
-        <div className="rounded-full basis-6/12 bg-[#f5deb3] flex justify-center items-center sm:w-[500px] sm:h-[500px] w-full h-full">
-          <Image
-            src="/featured.jpg"
-            alt="cactus"
-            width={400}
-            height={400}
-            className="rounded-full"
-          />
-        </div>
+        <Image
+          src="/featured.jpg"
+          alt="cactus"
+          width={400}
+          height={400}
+          className="block sm:w-[400px] w-full h-auto mx-auto rounded-[50%] border-[30px] border-solid border-[wheat]"
+        />
       </div>
     </section>
   )

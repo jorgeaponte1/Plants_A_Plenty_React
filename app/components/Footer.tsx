@@ -27,9 +27,7 @@ function Footer() {
         id="contact"
         className="flex items-center justify-center flex-col text-center"
       >
-        <h3 className="font-medium capitalize text-4xl my-8 font-serif">
-          Plants A Plenty
-        </h3>
+        <h3 className="capitalize text-4xl my-8 font-serif">Plants A Plenty</h3>
         <p className="my-4 mx-10 text-xl text-[#cacdd2]">
           Looking for a convenient and hassle-free way to bring the beauty of
           nature into your home or workspace? Check out our online plant shop!

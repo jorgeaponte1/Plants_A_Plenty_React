@@ -12,6 +12,7 @@ const config: Config = {
       md: "768px",
       lg: "960px",
       xl: "1200px",
+      "2xl": "1600px",
       "h-xs": { raw: "(max-height: 653px)" },
       "h-sm": { raw: "(max-height: 750px)" },
       "h-md": { raw: "(max-height: 950px)" },

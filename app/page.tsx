@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar"
 import HeroVideo from "./components/HeroVideo"
 import FeaturedPlant from "./components/FeaturedPlant"
 import ProductSlider from "./components/ProductSlider"
-import About from "./components/About"
+import PlantCare from "./components/PlantCare"
 import Testimonials from "./components/Testimonials"
 import Subscription from "./components/Subscription"
 import Footer from "./components/Footer"
@@ -18,7 +18,7 @@ export default function Home() {
         <div className="w-full m-auto bg-white">
           <FeaturedPlant />
           <ProductSlider />
-          <About />
+          <PlantCare />
           <Testimonials />
           <Subscription />
         </div>

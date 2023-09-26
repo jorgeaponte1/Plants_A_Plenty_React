@@ -34,7 +34,7 @@ function FeaturedPlant() {
         </p>
       </div>
       <div className="lg:w-1/2 p-5">
-        <div className="rounded-full basis-6/12 bg-[#f5deb3] flex justify-center items-center w-[500px] h-[500px]">
+        <div className="rounded-full basis-6/12 bg-[#f5deb3] flex justify-center items-center sm:w-[500px] sm:h-[500px] w-full h-full">
           <Image
             src="/featured.jpg"
             alt="cactus"

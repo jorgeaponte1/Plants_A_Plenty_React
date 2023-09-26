@@ -12,8 +12,8 @@ const sansita_swashed = Sansita_Swashed({
 
 function Navbar() {
   //   const session = useSession()
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [items, setItems] = useState(0)
+  const [loggedIn, setLoggedIn] = useState(true)
+  const [items, setItems] = useState(5)
 
   return (
     <header className="absolute top-0 right-0 my-0 mx-8 w-full">
@@ -28,7 +28,7 @@ function Navbar() {
         </div>
 
         {/* NavMenu */}
-        <ul className="hidden lg:flex lg:gap-3 lg:justify-center text-[wheat] text-sm">
+        <ul className="hidden lg:flex lg:gap-4 lg:justify-center text-[wheat] text-sm">
           <li
             id="resp"
             className="hover:text-[rgb(135,161,93)] float-left text-left tracking-[2px] font-[bold] transition-all duration-[0.3s] ease-linear"
@@ -76,7 +76,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/logout/"
-                    className="bg-[rgb(240,215,176)] text-black no-underline uppercase mt-5 px-[2.5em] py-[1em] rounded-xl hover:bg-[rgb(135,161,93)] text-sm font-sans font-bold"
+                    className="bg-[rgb(240,215,176)] text-black no-underline uppercase mt-5 px-[2.5em] py-[1em] rounded-xl hover:bg-[rgb(135,161,93)] text-sm font-serif font-semibold"
                   >
                     LOGOUT
                   </a>
@@ -85,7 +85,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/login/"
-                    className="bg-[rgb(240,215,176)] text-black no-underline uppercase mt-5 px-[1.5em] py-[1em] rounded-xl hover:bg-[rgb(135,161,93)] text-sm font-sans font-bold"
+                    className="bg-[rgb(240,215,176)] text-black no-underline uppercase mt-5 px-[1.5em] py-[1em] rounded-xl hover:bg-[rgb(135,161,93)] text-sm font-serif font-semibold"
                   >
                     LOGIN/SIGNUP
                   </a>
@@ -94,7 +94,7 @@ function Navbar() {
             </ul>
           </div>
           {/* Cart */}
-          <div className="relative mr-3">
+          <div className="relative mx-3">
             <button
               id="cartbtn"
               className="text-center bg-transparent border-none cursor-pointer"
@@ -102,7 +102,7 @@ function Navbar() {
               <BsCart2 className="text-[rgb(240,215,176)] h-6 w-6" />
             </button>
             {/* Cart Notification */}
-            <div className="absolute flex justify-center items-center w-7 h-7 text-black bg-[rgb(240,215,176)] rounded-full -top-5 -right-4">
+            <div className="absolute flex justify-center items-center w-7 h-7 text-black bg-[rgb(240,215,176)] rounded-full -top-5 -right-4 font-sans">
               {items}
             </div>
           </div>

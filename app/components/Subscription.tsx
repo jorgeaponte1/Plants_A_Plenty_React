@@ -20,26 +20,26 @@ function Subscription() {
         <article className="flex flex-col justify-center items-center gap-y-10 lg:w-1/2">
           <p>
             Welcome to our monthly plant subscription service! Each month,
-            you'll receive a carefully curated selection of plants straight to
-            your door, chosen for their beauty and ease of care. From lush ferns
-            to colorful succulents, our expert team will handpick a variety of
-            plants that will thrive in your home or office.
+            you&apos;ll receive a carefully curated selection of plants straight
+            to your door, chosen for their beauty and ease of care. From lush
+            ferns to colorful succulents, our expert team will handpick a
+            variety of plants that will thrive in your home or office.
           </p>
 
           <p>
-            With your subscription, you'll also receive detailed care
+            With your subscription, you&apos;ll also receive detailed care
             instructions and tips to ensure your plants stay healthy and
-            vibrant. Plus, as a subscriber, you'll enjoy exclusive access to new
-            and rare plant varieties, as well as discounts on other
+            vibrant. Plus, as a subscriber, you&apos;ll enjoy exclusive access
+            to new and rare plant varieties, as well as discounts on other
             plant-related products in our shop.
           </p>
 
           <p>
-            Whether you're a seasoned plant enthusiast or just starting out on
-            your green journey, our subscription service is the perfect way to
-            bring more life and joy into your space. So why wait? Sign up today
-            and start enjoying the benefits of having beautiful, healthy plants
-            in your home every month!
+            Whether you&apos;re a seasoned plant enthusiast or just starting out
+            on your green journey, our subscription service is the perfect way
+            to bring more life and joy into your space. So why wait? Sign up
+            today and start enjoying the benefits of having beautiful, healthy
+            plants in your home every month!
           </p>
         </article>
         <article className="lg:w-1/2">

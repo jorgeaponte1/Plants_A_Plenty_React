@@ -27,3 +27,7 @@ p {
   line-height: 35px;
   font-size: 30px;
 }
+
+li {
+  font-family: "Crimson Text", serif;
+}

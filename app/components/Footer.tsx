@@ -22,7 +22,7 @@ function Footer() {
   }
 
   return (
-    <footer className="bg-[#111] h-auto w-auto text-white pt-10 border-[5px] border-solid border-[wheat]">
+    <footer className="bg-[#111] h-auto w-full text-white pt-10 border-[5px] border-solid border-[wheat]">
       <div
         id="contact"
         className="flex items-center justify-center flex-col text-center"
@@ -35,9 +35,9 @@ function Footer() {
           including succulents, herbs, and flowering plants, as well as stylish
           planters and accessories to help you create the perfect green oasis.
           Our team is dedicated to providing excellent customer service and
-          expert advice, so whether you're a seasoned plant parent or a
-          first-time buyer, we're here to help. Shop now and discover the joys
-          of gardening from the comfort of your own home!
+          expert advice, so whether you&apos;re a seasoned plant parent or a
+          first-time buyer, we&apos;re here to help. Shop now and discover the
+          joys of gardening from the comfort of your own home!
         </p>
         <ul className="flex flex-row items-center justify-center mt-4 mb-12">
           {renderIcon(BiLogoFacebookCircle)}

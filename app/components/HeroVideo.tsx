@@ -20,7 +20,7 @@ function HeroVideo() {
       </video>
       <div className="absolute z-10 bg-[rgba(245,222,179,0.579)] rounded-full flex items-center justify-center text-4xl text-white p-16">
         <h2 className={`${sansita_swashed.variable} font-sansita_swashed`}>
-          "Bringing the outdoors in, one plant at a time."
+          Bringing the outdoors in, one plant at a time.
         </h2>
       </div>
     </section>

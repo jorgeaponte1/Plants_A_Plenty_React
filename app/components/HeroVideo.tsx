@@ -9,7 +9,10 @@ const sansita_swashed = Sansita_Swashed({
 
 function HeroVideo() {
   return (
-    <section className="relative flex justify-center items-center w-full h-screen overflow-hidden">
+    <section
+      id="hero"
+      className="relative flex justify-center items-center w-full h-screen overflow-hidden"
+    >
       <video
         className="absolute z-0 w-full h-full object-cover"
         autoPlay

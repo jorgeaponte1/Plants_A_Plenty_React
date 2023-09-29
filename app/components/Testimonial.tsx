@@ -1,22 +1,13 @@
 import React from "react"
-import { Sansita_Swashed } from "next/font/google"
 import TestimonialSlider from "./TestimonialSlider"
-
-const sansita_swashed = Sansita_Swashed({
-  subsets: ["latin"],
-  variable: "--font-sansita_swashed",
-  weight: ["700"],
-})
 
 function Testimonial() {
   return (
     <section
       id="testimonial"
-      className="lg:w-4/5 pt-10 min-h-[auto] flex flex-col gap-y-8 lg:gap-x-16 justify-center mx-auto items-center lg:px-5 px-10"
+      className="w-full min-h-[auto] flex flex-col gap-y-8 lg:gap-x-16 justify-center items-center"
     >
-      <h2
-        className={`${sansita_swashed.variable} font-sansita_swashed text-center text-6xl`}
-      >
+      <h2 className="font-sansita_swashed font-bold text-center text-6xl">
         What our customers are saying
       </h2>
       <div

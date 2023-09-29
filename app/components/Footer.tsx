@@ -15,14 +15,14 @@ function Footer() {
           href="#"
           className="transition-colors duration-400 ease-in-out hover:text-[aqua]"
         >
-          <IconComponent className="text-white text-lg w-5 hover:text-[aqua] transition-colors duration-400 ease-in-out" />
+          <IconComponent className="text-white text-lg w-6 h-6 hover:text-[aqua] transition-colors duration-400 ease-in-out" />
         </a>
       </li>
     )
   }
 
   return (
-    <footer className="bg-[#111] h-auto w-full text-white pt-10 border-[5px] border-solid border-[wheat]">
+    <footer className="bg-[#111] h-auto w-full text-white border-[5px] border-solid border-[wheat]">
       <div
         id="contact"
         className="flex items-center justify-center flex-col text-center"

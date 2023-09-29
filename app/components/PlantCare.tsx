@@ -9,7 +9,10 @@ const sansita_swashed = Sansita_Swashed({
 
 function PlantCare() {
   return (
-    <section className="lg:w-4/5 min-h-[auto] flex 2xl:flex-row flex-col gap-y-8 lg:gap-x-16 justify-center mx-auto items-center lg:px-5 px-10">
+    <section
+      id="care"
+      className="lg:w-4/5 min-h-[auto] flex 2xl:flex-row flex-col gap-y-8 lg:gap-x-16 justify-center mx-auto items-center lg:px-5 px-10"
+    >
       <video
         className="max-1/2 sm:object-cover rounded-[20px] border-8 border-solid border-[wheat]"
         autoPlay

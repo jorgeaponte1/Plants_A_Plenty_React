@@ -10,7 +10,10 @@ const sansita_swashed = Sansita_Swashed({
 
 function Subscription() {
   return (
-    <section className="lg:w-4/5 mx-auto h-auto flex flex-col items-center justify-center gap-y-6 lg:px-28 px-5">
+    <section
+      id="subscription"
+      className="lg:w-4/5 mx-auto h-auto flex flex-col items-center justify-center gap-y-6 lg:px-28 px-5"
+    >
       <h2
         className={`${sansita_swashed.variable} font-sansita_swashed text-center text-6xl flex justify-center items-center m-16`}
       >

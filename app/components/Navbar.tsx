@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <header className="absolute top-0 right-0 my-0 mx-8 w-full">
       <nav
-        className={`w-full h-20 flex items-center lg:justify-around justify-between fixed bg-[linear-gradient(to_bottom,#000,#0003_70%,#0000)] transition-[background-color] duration-[0.5s] z-[1] mx-auto my-0 py-7 border-b-[rgba(251,216,158,1)] border-b border-solid left-0 ${sansita_swashed.variable} font-sansita_swashed font-medium hover:bg-black`}
+        className={`w-full h-20 flex items-center lg:justify-around justify-between fixed bg-[linear-gradient(to_bottom,#000,#0003_70%,#0000)] transition-[background-color] duration-[0.5s] z-10 mx-auto my-0 py-7 border-b-[rgba(251,216,158,1)] border-b border-solid left-0 ${sansita_swashed.variable} font-sansita_swashed font-medium hover:bg-black`}
       >
         {/* Logo */}
         <div className="xl:text-4xl sm:text-2xl font-medium text-[wheat] xl:ml-12 ml-5">

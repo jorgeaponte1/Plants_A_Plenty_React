@@ -19,7 +19,7 @@ function HeroVideo() {
         muted
         loop
       >
-        <source src="/hero.mp4" type="video/mp4" />
+        <source src="/hero.webm" type="video/webm" />
       </video>
       <div className="absolute z-10 bg-[rgba(245,222,179,0.579)] rounded-full flex items-center justify-center text-4xl text-white p-16">
         <h2 className={`${sansita_swashed.variable} font-sansita_swashed`}>

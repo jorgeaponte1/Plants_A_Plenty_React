@@ -19,7 +19,7 @@ function PlantCare() {
         muted
         loop
       >
-        <source src="/plantCare.mp4" type="video/mp4" />
+        <source src="/plantCare.webm" type="video/webm" />
       </video>
       <div className="min-h-0 flex flex-col items-center justify-center gap-16">
         <h2

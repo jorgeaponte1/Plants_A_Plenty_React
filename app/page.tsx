@@ -3,7 +3,7 @@ import HeroVideo from "./components/HeroVideo"
 import FeaturedPlant from "./components/FeaturedPlant"
 import ProductSlider from "./components/ProductSlider"
 import PlantCare from "./components/PlantCare"
-import Testimonials from "./components/Testimonials"
+import Testimonial from "./components/Testimonial"
 import Subscription from "./components/Subscription"
 import Footer from "./components/Footer"
 
@@ -19,7 +19,7 @@ export default function Home() {
           <FeaturedPlant />
           <ProductSlider />
           <PlantCare />
-          <Testimonials />
+          <Testimonial />
           <Subscription />
         </div>
         <Footer />

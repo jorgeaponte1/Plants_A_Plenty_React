@@ -1,11 +1,4 @@
 import React from "react"
-import { Sansita_Swashed } from "next/font/google"
-
-const sansita_swashed = Sansita_Swashed({
-  subsets: ["latin"],
-  variable: "--font-sansita_swashed",
-  weight: ["400", "700", "800", "900"],
-})
 
 function HeroVideo() {
   return (
@@ -21,8 +14,8 @@ function HeroVideo() {
       >
         <source src="/hero.webm" type="video/webm" />
       </video>
-      <div className="absolute z-10 bg-[rgba(245,222,179,0.579)] rounded-full flex items-center justify-center text-4xl text-white p-16">
-        <h2 className={`${sansita_swashed.variable} font-sansita_swashed`}>
+      <div className="absolute z-10 bg-[rgba(245,222,179,0.579)] rounded-[50%] flex items-center justify-center text-4xl text-white p-16">
+        <h2 className="font-sansita_swashed font-bold">
           Bringing the outdoors in, one plant at a time.
         </h2>
       </div>

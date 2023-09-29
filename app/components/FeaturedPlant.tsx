@@ -1,26 +1,17 @@
 import React from "react"
-import { Sansita_Swashed } from "next/font/google"
 import Image from "next/image"
-
-const sansita_swashed = Sansita_Swashed({
-  subsets: ["latin"],
-  variable: "--font-sansita_swashed",
-  weight: ["400"],
-})
 
 function FeaturedPlant() {
   return (
     <section
       id="featured"
-      className="flex flex-col lg:flex-row items-center justify-center mx-auto w-full lg:w-4/5 py-10"
+      className="flex flex-col lg:flex-row items-center justify-center"
     >
-      <div className="lg:w-1/2 p-5">
-        <p
-          className={`text-[60px] ${sansita_swashed.variable} font-sansita_swashed font-medium mb-12 lg:text-left text-center`}
-        >
+      <div className="lg:w-1/2">
+        <p className="text-[60px] font-sansita_swashed font-normal mb-12 lg:text-left text-center">
           Plant of the Month
         </p>
-        <p className=" font-light">
+        <p className="font-light">
           There are many advantages to owning a cactus plant. For starters, they
           are incredibly easy to care for, making them a great option for those
           who may not have a lot of time or experience with gardening. Cacti

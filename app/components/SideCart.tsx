@@ -41,7 +41,7 @@ function SideCart() {
               {/* Create a foreach loop for all the plants in the cart */}
               <div className="flex flex-row justify-center items-center gap-x-5">
                 <Image
-                  src="/product1.jpg"
+                  src="/pothos.jpg"
                   width={100}
                   height={100}
                   alt="pothos plant"

@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Image from "next/image"
-import { EffectCoverflow, Pagination } from "swiper/modules"
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules"
 
 import "swiper/css"
 import "swiper/css/effect-coverflow"
@@ -18,6 +18,10 @@ function TestimonialSlider() {
       grabCursor={true}
       centeredSlides={true}
       slidesPerView={"auto"}
+      autoplay={{
+        delay: 7500,
+        disableOnInteraction: false,
+      }}
       coverflowEffect={{
         rotate: 50,
         stretch: 0,
@@ -27,7 +31,7 @@ function TestimonialSlider() {
       }}
       loop={true}
       pagination={true}
-      modules={[EffectCoverflow, Pagination]}
+      modules={[Autoplay, EffectCoverflow, Pagination]}
       className="mySwiper bg-[rgba(7,96,78,1)] lg:h-[500px] lg:my-10 h-auto mt-10"
     >
       {testimonialData.map((testimonial, index) => (

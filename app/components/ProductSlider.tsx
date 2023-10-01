@@ -1,8 +1,16 @@
-import React from "react"
+"use client"
+
+import React, { useState } from "react"
 import ProductModal from "./ProductModal"
 import PlantProductCard from "./PlantProductCard"
+import type { Plant } from "./PlantProductCard"
 
 function ProductSlider() {
+  const [selectedPlant, setSelectedPlant] = useState<Plant | null>(null)
+  const openModalWithPlant = (plant: Plant) => {
+    setSelectedPlant(plant)
+  }
+
   return (
     <section
       id="trending"
@@ -12,8 +20,11 @@ function ProductSlider() {
         <h2 className="font-sansita_swashed font-bold text-center text-6xl text-[wheat] my-12">
           Trending Plants
         </h2>
-        <PlantProductCard />
-        <ProductModal />
+        <PlantProductCard onPlantClick={openModalWithPlant} />
+        <ProductModal
+          plant={selectedPlant}
+          onClose={() => setSelectedPlant(null)}
+        />
       </div>
     </section>
   )

@@ -36,7 +36,7 @@ function TestimonialSlider() {
     >
       {testimonialData.map((testimonial, index) => (
         <SwiperSlide key={index} className="bg-white h-full">
-          <div className="flex flex-col justify-center items-center lg:flex-row pt-10">
+          <div className="flex flex-col justify-center items-center lg:flex-row h-full lg:pt-0 pt-5">
             <Image
               src={testimonial.image}
               width={400}

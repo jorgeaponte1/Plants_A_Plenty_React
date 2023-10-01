@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Sansita_Swashed } from "next/font/google"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
+import { Providers } from "./providers"
 
 const sansita_swashed = Sansita_Swashed({
   subsets: ["latin"],
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={sansita_swashed.variable}>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

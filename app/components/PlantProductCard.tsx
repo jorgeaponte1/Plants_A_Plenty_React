@@ -138,8 +138,14 @@ function PlantProductCard({ onPlantClick }: PlantProductCardProps) {
         <SwiperSlide
           key={index}
           onClick={() => onPlantClick(plant)}
-          className="pb-10"
+          className="mb-10 hover:opacity-1 relative"
         >
+          {/* Overlay: Positioned on top of the card */}
+          <div className="absolute inset-0 bg-gray-400 opacity-0 hover:opacity-90 flex justify-center items-center transition-opacity">
+            <span className="text-[wheat] text-2xl font-bold font-serif">
+              Click for more info
+            </span>
+          </div>
           <Tilt options={defaultOptions}>
             <Card className="w-full hover:text-[#27ae60]" key={index}>
               <CardHeader>

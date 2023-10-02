@@ -8,7 +8,7 @@ function FeaturedPlant() {
       className="flex flex-col lg:flex-row items-center justify-center"
     >
       <div className="lg:w-1/2">
-        <p className="text-[60px] font-sansita_swashed font-normal mb-12 lg:text-left text-center">
+        <p className="sm:text-[60px] text-6xl font-sansita_swashed font-normal mb-12 lg:text-left text-center">
           Plant of the Month
         </p>
         <p className="font-light">

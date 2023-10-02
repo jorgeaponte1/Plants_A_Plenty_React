@@ -115,6 +115,7 @@ function PlantProductCard({ onPlantClick }: PlantProductCardProps) {
       pagination={{
         clickable: true,
       }}
+      grabCursor={true}
       modules={[Pagination]}
       className="mySwiper sm:mb-10 mb-5"
       breakpoints={{

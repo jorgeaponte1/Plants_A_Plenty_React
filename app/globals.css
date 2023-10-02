@@ -16,6 +16,25 @@
   }
 }
 
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  background-color: wheat;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 body {
   height: 100vh;
   background-color: #fff;
@@ -26,4 +45,8 @@ p {
   font-family: "Crimson Text", serif;
   line-height: 35px;
   font-size: 30px;
+}
+
+li {
+  font-family: "Crimson Text", serif;
 }

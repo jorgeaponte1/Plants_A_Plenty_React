@@ -1,8 +1,16 @@
 import "./globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Sansita_Swashed } from "next/font/google"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import { Providers } from "./providers"
+import { Analytics } from "@vercel/analytics/react"
 
-const inter = Inter({ subsets: ["latin"] })
+const sansita_swashed = Sansita_Swashed({
+  subsets: ["latin"],
+  variable: "--font-sansita_swashed",
+  weight: ["400", "700", "800"],
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={sansita_swashed.variable}>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
+        <Analytics />
+      </body>
     </html>
   )
 }

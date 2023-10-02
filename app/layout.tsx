@@ -4,6 +4,7 @@ import { Sansita_Swashed } from "next/font/google"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import { Providers } from "./providers"
+import { Analytics } from "@vercel/analytics/react"
 
 const sansita_swashed = Sansita_Swashed({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )

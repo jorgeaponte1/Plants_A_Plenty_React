@@ -1,10 +1,11 @@
 import "./globals.css"
 import type { Metadata } from "next"
 import { Sansita_Swashed } from "next/font/google"
-import Footer from "./components/Footer"
-import Header from "./components/Header"
+//import Footer from "./components/Footer"
+//import Header from "./components/Header"
 import { Providers } from "./providers"
 import { Analytics } from "@vercel/analytics/react"
+import ToasterContext from "./ToasterContext"
 
 const sansita_swashed = Sansita_Swashed({
   subsets: ["latin"],
@@ -26,9 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={sansita_swashed.variable}>
         <Providers>
-          <Header />
+          <ToasterContext />
+          {/* <Header /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
         <Analytics />
       </body>

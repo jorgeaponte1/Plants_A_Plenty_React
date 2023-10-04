@@ -52,6 +52,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), nextui()],
+  plugins: [
+    require("tailwindcss-animate"),
+    nextui(),
+    require("@tailwindcss/forms"),
+  ],
 }
 export default config

@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/app/components/ui/sheet"
 import { RxHamburgerMenu } from "react-icons/rx"
+import LoginButton from "./LoginButton"
 
 function HamburgerMenu() {
   return (
@@ -23,19 +24,8 @@ function HamburgerMenu() {
         <SheetContent side="top">
           <SheetHeader>
             <SheetTitle>Menu</SheetTitle>
-            <SheetDescription></SheetDescription>
           </SheetHeader>
-          {/*           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <div className="text-right">Name</div>
-              <div>Email</div>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <div className="text-right">Username</div>
-              <div>Password</div>
-            </div>
-          </div> */}
-          <div>
+          <div className="h-full">
             <ul className="flex flex-col gap-4 lg:justify-center text-black text-sm xl:text-lg mt-4">
               <li
                 id="home"
@@ -75,8 +65,10 @@ function HamburgerMenu() {
               </li>
             </ul>
           </div>
-          <SheetFooter>
-            <SheetClose asChild></SheetClose>
+          <SheetFooter className="flex items-end">
+            <SheetClose asChild>
+              <LoginButton />
+            </SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>

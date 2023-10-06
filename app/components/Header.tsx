@@ -16,7 +16,7 @@ const links = [
 function Header() {
   return (
     <header className="absolute top-0 right-0 my-0 mx-8 w-full">
-      <nav className="w-full h-20 flex items-center lg:justify-around justify-between fixed bg-[linear-gradient(to_bottom,#000,#0003_70%,#0000)] transition-[background-color] duration-[0.5s] z-10 mx-auto my-0 py-7 border-b-[rgba(251,216,158,1)] border-b border-solid left-0 font-medium hover:bg-black">
+      <nav className="w-full h-20 flex items-center justify-between fixed bg-[linear-gradient(to_bottom,#000,#0003_70%,#0000)] transition-[background-color] duration-[0.5s] z-10 mx-auto my-0 py-7 border-b-[rgba(251,216,158,1)] border-b border-solid left-0 font-medium hover:bg-black">
         {/* Logo */}
         <div className="xl:text-4xl sm:text-2xl font-medium text-[wheat] xl:ml-12 ml-5">
           <a href="#">
@@ -25,10 +25,9 @@ function Header() {
             </h2>
           </a>
         </div>
-
         {/* NavMenu */}
         <div className="flex flex-row sm:justify-evenly justify-end lg:items-center items-stat">
-          <ul className="hidden lg:flex lg:gap-4 lg:justify-center text-[wheat] text-sm xl:text-lg mr-3">
+          <ul className="hidden lg:flex lg:gap-4 lg:justify-center text-[wheat] text-sm xl:text-lg pr-3 xl:pr-6">
             {links.map(link => (
               <li
                 key={link.label}
@@ -39,13 +38,16 @@ function Header() {
               </li>
             ))}
           </ul>
-          <HamburgerMenu />
-
-          {/* LogIn/LogOut/Cart */}
-          <div className="flex items-center gap-3">
-            <LoginButton />
-            <SideCart />
+          <div className="z-50">
+            <HamburgerMenu />
           </div>
+          {/* LogIn/LogOut/Cart */}
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex">
+            <LoginButton />
+          </div>
+          <SideCart />
         </div>
       </nav>
     </header>

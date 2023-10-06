@@ -7,7 +7,7 @@ function Testimonial() {
       id="testimonial"
       className="w-full min-h-[auto] flex flex-col gap-y-8 lg:gap-x-16 justify-center items-center"
     >
-      <h2 className="font-sansita_swashed font-bold text-center text-6xl">
+      <h2 className="font-sansita_swashed font-bold text-center text-5xl sm:text-6xl">
         What our customers are saying
       </h2>
       <div

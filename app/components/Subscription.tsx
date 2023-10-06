@@ -7,7 +7,7 @@ function Subscription() {
       id="subscription"
       className="h-auto flex flex-col items-center justify-center"
     >
-      <h2 className="font-sansita_swashed font-bold text-center text-6xl flex justify-center items-center mx-16 mb-16">
+      <h2 className="font-sansita_swashed font-bold text-center text-5xl sm:text-6xl flex justify-center items-center mx-16 mb-16">
         The Gift That Keeps On Giving
       </h2>
       <div className="flex lg:flex-row flex-col justify-between items-center gap-y-10">
@@ -38,7 +38,7 @@ function Subscription() {
         </article>
         <article className="lg:w-1/2">
           <Image
-            src="/subscriptionImage.jpg"
+            src="/subscriptionImage.webp"
             alt="four house plants photo"
             width={400}
             height={400}

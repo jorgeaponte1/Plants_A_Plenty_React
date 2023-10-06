@@ -42,7 +42,7 @@ export default function Login() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-1/2 sm:max-w-sm">
             <Image
-              src="/badge.png"
+              src="/badge.webp"
               width={100}
               height={100}
               alt="Company Logo"
@@ -154,7 +154,7 @@ export default function Login() {
           </div>
         </div>
         <div className="relative w-1/2 hidden lg:flex">
-          <Image src="/featured.jpg" fill={true} alt="plant" />
+          <Image src="/featured.webp" fill={true} alt="plant" />
         </div>
       </div>
     </>

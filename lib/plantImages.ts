@@ -3,39 +3,39 @@ import { plantImage } from "./types"
 const plantImages: plantImage[] = [
   {
     name: "Pothos",
-    image: "/pothos.jpg",
+    image: "/pothos.webp",
   },
   {
     name: "Birds of Paradise",
-    image: "/birds-of-paradise.jpg",
+    image: "/birds-of-paradise.webp",
   },
   {
     name: "Snake Plant",
-    image: "/snake-plant.jpg",
+    image: "/snake-plant.webp",
   },
   {
     name: "Fiddle Fig",
-    image: "/fiddle-fig.jpg",
+    image: "/fiddle-fig.webp",
   },
   {
     name: "String of Pearls",
-    image: "/string-of-pearls.jpg",
+    image: "/string-of-pearls.webp",
   },
   {
     name: "Ponytail Palm",
-    image: "/ponytail-palm.jpg",
+    image: "/ponytail-palm.webp",
   },
   {
     name: "Aloe Vera",
-    image: "/aloe-vera.jpg",
+    image: "/aloe-vera.webp",
   },
   {
     name: "ZZ Plant",
-    image: "/zz-plant.jpg",
+    image: "/zz-plant.webp",
   },
   {
     name: "Cactus",
-    image: "/cactus.jpg",
+    image: "/cactus.webp",
   },
 ]
 

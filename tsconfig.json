@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "lib/prismadb.ts",
-    "app/api/auth/[...nextauth]/route.tsx",
+    "app/api/auth/[...nextauth]/route.ts",
     "app/page.tsx"
   ],
   "exclude": ["node_modules"]

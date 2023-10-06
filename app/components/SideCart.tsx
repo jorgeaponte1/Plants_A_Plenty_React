@@ -4,20 +4,55 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
+  //SheetDescription,
   SheetHeader,
   SheetFooter,
   SheetTitle,
   SheetTrigger,
 } from "@/app/components/ui/sheet"
-import { BsCart2, BsPlusLg, BsDashLg } from "react-icons/bs"
-import React, { useState } from "react"
+import { BsCart2 } from "react-icons/bs"
+import React, { useEffect, useState } from "react"
+import QuantityButtons from "./QuantityButtons"
+import { CartItem } from "@/lib/types"
+import plantImages from "@/lib/plantImages"
+
 import Image from "next/image"
 
+const localImagesMap: { [key: string]: string } = plantImages.reduce<{
+  [key: string]: string
+}>((acc, curr) => {
+  acc[curr.name] = curr.image
+  return acc
+}, {})
+
 function SideCart() {
-  const [items, setItems] = useState(5)
-  const [price, setPrice] = useState(100)
-  const [plantName, setPlantName] = useState("Pothos Plant")
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch("/api/cart")
+        const data = await res.json()
+        const updatedCartItems = data.map((item: CartItem) => ({
+          ...item,
+          product: {
+            ...item.product,
+            image: localImagesMap[item.product.name] || item.product.image, // Fallback to server image if local not found
+          },
+        }))
+        setCartItems(updatedCartItems)
+      } catch (error) {
+        console.error("Failed to fetch products:", error)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
+  const cartSubtotal = cartItems.reduce(
+    (acc, item) => acc + item.product.price * item.quantity,
+    0
+  )
 
   return (
     <Sheet>
@@ -27,75 +62,57 @@ function SideCart() {
             <BsCart2 className="text-[rgb(240,215,176)] h-6 w-6" />
           </button>
           <div className="absolute flex justify-center items-center w-7 h-7 text-black bg-[rgb(240,215,176)] rounded-full -top-5 -right-4 font-sans">
-            {items}
+            {cartItems.length}
           </div>
         </div>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
             <div className="text-2xl text-left">Shopping Cart</div>
           </SheetTitle>
-          <SheetDescription>
-            <div>
-              {/* Create a foreach loop for all the plants in the cart */}
-              <div className="flex flex-row justify-center items-center gap-x-5">
-                <Image
-                  src="/pothos.jpg"
-                  width={100}
-                  height={100}
-                  alt="pothos plant"
-                />
-                <div className="flex items-end flex-col">
-                  <div className="text-2xl font-semibold">{plantName}</div>
-                  <div>Price</div>
-                  <div className="font-bold pb-6">${price.toFixed(2)}</div>
-                  <div className="pb-1">Quantity</div>
-                  <div className="flex flex-row text-center items-center justify-evenly border-2 rounded border-gray-200 w-28 h-8">
-                    <div className="flex items-center justify-center">
-                      <BsPlusLg />
-                    </div>
-                    <div className="w-12 border-x border-gray-200 h-full flex text-center justify-center items-center">
-                      1
-                    </div>
-                    <div className="">
-                      <BsDashLg />
-                    </div>
-                  </div>
+          {cartItems.map(item => (
+            <div
+              key={item.product.id}
+              className="flex flex-row justify-between items-center pb-5"
+            >
+              <Image
+                src={item.product.image}
+                width={100}
+                height={100}
+                alt={item.product.name}
+              />
+              <div className="flex items-end flex-col">
+                <div className="text-2xl font-semibold">
+                  {item.product.name}
+                </div>
+                <div>Price</div>
+                <div className="font-bold pb-6">
+                  ${item.product.price.toFixed(2)}
+                </div>
+                <div className="pb-1">Quantity</div>
+                <div className="flex flex-row text-center items-center justify-evenly border-2 rounded border-gray-200 w-28 h-8">
+                  <QuantityButtons
+                    id={item.product.id}
+                    quantity={item.quantity}
+                  />
                 </div>
               </div>
             </div>
-          </SheetDescription>
+          ))}
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            {/*                   <Label htmlFor="name" className="text-right">
-                    Name
-                  </Label>
-                  <Input
-                    id="name"
-                    value="Pedro Duarte"
-                    className="col-span-3"
-                  /> */}
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            {/*                   <Label htmlFor="username" className="text-right">
-                    Username
-                  </Label>
-                  <Input
-                    id="username"
-                    value="@peduarte"
-                    className="col-span-3"
-                  /> */}
-          </div>
-        </div>
         <SheetFooter>
-          <SheetClose asChild>
-            <div className="flex flex-row items-center justify-between">
-              <div className="font-bold">Cart Subtotal:</div>
-              <div className="font-bold">${price.toFixed(2)}</div>
+          <div className="flex flex-col justify-center items-center w-full gap-y-4">
+            <div className="flex flex-row items-center justify-between font-serif font-bold text-xl">
+              <div>Cart Subtotal:</div>
+              <div>${cartSubtotal.toFixed(2)}</div>
             </div>
-          </SheetClose>
+            <SheetClose asChild>
+              <button className="bg-[#222] w-full box-border text-white cursor-pointer inline-block text-[25px] font-bold leading-normal max-w-none min-h-[60px] min-w-[10px] overflow-hidden relative text-center normal-case select-none touch-manipulation m-0 pt-[9px] pb-2 px-5 border-none hover:opacity-75 focus:opacity-30">
+                Checkout
+              </button>
+            </SheetClose>
+          </div>
         </SheetFooter>
       </SheetContent>
     </Sheet>

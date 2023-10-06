@@ -4,7 +4,10 @@ import { useEffect } from "react"
 import { signOut, useSession } from "next-auth/react"
 
 function LoginButton() {
-  const { data: session, update } = useSession()
+  // const { data: session, update } = useSession()
+  const session = useSession()
+  const sessionData = session?.data
+  const update = session?.update
 
   useEffect(() => {
     const interval = setInterval(() => update(), 1000 * 60 * 60)
@@ -12,9 +15,9 @@ function LoginButton() {
   }, [update])
 
   return (
-    <div className="pl-2">
-      <ul className="hidden lg:flex">
-        {session ? (
+    <>
+      <ul className="flex">
+        {sessionData ? (
           <li>
             <button
               onClick={() => signOut()}
@@ -34,7 +37,7 @@ function LoginButton() {
           </li>
         )}
       </ul>
-    </div>
+    </>
   )
 }
 

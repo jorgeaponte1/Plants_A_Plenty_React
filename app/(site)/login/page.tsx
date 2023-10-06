@@ -9,7 +9,8 @@ import { FcGoogle } from "react-icons/fc"
 import { FaGithub } from "react-icons/fa"
 
 export default function Login() {
-  const session = useSession()
+  const { status, data: session } = useSession()
+
   const router = useRouter()
   const [data, setData] = useState({
     email: "",
@@ -17,7 +18,7 @@ export default function Login() {
   })
 
   useEffect(() => {
-    if (session?.status === "authenticated") {
+    if (status === "authenticated" && session?.user) {
       router.push("/")
     }
   })

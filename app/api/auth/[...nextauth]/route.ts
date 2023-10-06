@@ -6,7 +6,7 @@ import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github"
 import bcrypt from "bcrypt"
 
-const handler = NextAuth({
+export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
@@ -65,12 +65,22 @@ const handler = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token }: { session: any; token: any }) {
+      // console.log(session.user.email)
+      return session
+    },
+    async jwt({ token }: { token: any }) {
+      //console.log(token)
+      return token
+    },
+  },
   secret: process.env.SECRET,
   session: {
     strategy: "jwt" as SessionStrategy,
   },
   debug: process.env.NODE_ENV === "development",
-})
+}
 
-//const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST }

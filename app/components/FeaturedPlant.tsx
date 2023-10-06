@@ -8,7 +8,7 @@ function FeaturedPlant() {
       className="flex flex-col lg:flex-row items-center justify-center"
     >
       <div className="lg:w-1/2">
-        <p className="sm:text-[60px] text-6xl font-sansita_swashed font-normal mb-12 lg:text-left text-center">
+        <p className="sm:text-[60px] text-5xl sm:text-6xl font-sansita_swashed font-normal mb-12 lg:text-left text-center">
           Plant of the Month
         </p>
         <p className="font-light">
@@ -26,7 +26,7 @@ function FeaturedPlant() {
       </div>
       <div className="lg:w-1/2 p-5">
         <Image
-          src="/featured.jpg"
+          src="/featured.webp"
           alt="cactus"
           width={400}
           height={400}

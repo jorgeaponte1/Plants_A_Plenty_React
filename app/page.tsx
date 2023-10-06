@@ -17,7 +17,7 @@ export default function Home() {
     <>
       {/* Main Container */}
       <Header />
-      <div className="flex flex-col sm:gap-y-16 gap-y-10 items-center">
+      <div className="flex flex-col sm:gap-y-16 gap-y-8 items-center">
         <HeroVideo />
         {/* Main Container */}
         <div className="lg:w-4/5 w-full m-auto bg-white pb-16 flex flex-col items-center justify-center sm:gap-y-16 gap-y-10 lg:px-5 px-10">

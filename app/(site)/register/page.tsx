@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import axios from "axios"
 import { toast } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
@@ -16,14 +15,26 @@ export default function Register() {
 
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    axios
-      .post("/api/register", data)
-      .then(() => {
-        toast.success("User has been registered!")
-        // Redirect to login page after successful registration
-        router.push("/login")
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       })
-      .catch(() => toast.error("Something went wrong!"))
+
+      if (!response.ok) {
+        throw new Error("Response not OK")
+      }
+
+      toast.success("User has been registered!")
+      // Redirect to login page after successful registration
+      router.push("/login")
+    } catch (error) {
+      toast.error("Something went wrong!")
+    }
   }
 
   return (
@@ -31,7 +42,7 @@ export default function Register() {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
-            src="/badge.png"
+            src="/badge.webp"
             width={100}
             height={100}
             alt="Company Logo"

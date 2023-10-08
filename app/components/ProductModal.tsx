@@ -30,16 +30,58 @@ function ProductModal({ plant, onClose }: ProductModalProps) {
   if (!plant) return null // if no plant is selected, don't render anything
 
   const addToCart = async (id: string) => {
-    onClose()
-    const res = await fetch(`/api/cart`, {
+    const res = await fetch(`/api/cart/${id}`, {
       method: "POST",
       body: JSON.stringify({ id }),
       headers: {
         "Content-Type": "application/json",
       },
     })
-    const data = await res.json()
+    if (!res.ok) {
+      return { success: false }
+    }
+
+    return { success: true }
     // console.log(data)
+  }
+
+  const buyOutOrder = async (id: string) => {
+    try {
+      // add the item to the cart
+      const addToCartRes = await addToCart(id)
+      if (!addToCartRes.success) {
+        throw new Error("Failed to add the item to the cart.")
+      }
+
+      // small delay before fetching the updated cart
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      // fetch the cart
+      const res = await fetch("/api/cart")
+      const cart = await res.json()
+
+      // create a checkout session
+      const response = await fetch("/api/checkout-sessions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart),
+      })
+
+      if (!response.ok) {
+        throw new Error("Server responded with a non-OK status")
+      }
+
+      const data = await response.json()
+      const { url } = data
+
+      window.location.assign(url)
+    } catch (error) {
+      console.error("Failed to process order:", error)
+      // Here, you can also notify the user about the error.
+      // For example, using a toast notification or an alert.
+    }
   }
 
   return (
@@ -78,13 +120,19 @@ function ProductModal({ plant, onClose }: ProductModalProps) {
               </ModalBody>
               <ModalFooter className="flex flex-row justify-between">
                 <button
-                  onClick={() => addToCart(plant.id)}
+                  onClick={() => {
+                    addToCart(plant.id)
+                    onClose()
+                  }}
                   className="bg-[#F4F1EB] text-black px-5 py-2 xl:rounded-3xl rounded-full hover:bg-gray-200 text-lg"
                 >
                   Add To Cart
                 </button>
                 <button
-                  onClick={onClose}
+                  onClick={() => {
+                    buyOutOrder(plant.id)
+                    onClose()
+                  }}
                   className="bg-[#F4F1EB] text-black px-5 py-2 xl:rounded-3xl rounded-full hover:bg-gray-200 text-lg"
                 >
                   Buy Now

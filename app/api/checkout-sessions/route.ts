@@ -28,19 +28,19 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
-      //success_url: "http://localhost:3000/success",
-      //cancel_url: "http://localhost:3000/cancelled",
-      success_url: process.env.VERCEL_URL + "success",
-      cancel_url: process.env.VERCEL_URL + "cancelled",
+      // success_url: "http://localhost:3000/success",
+      // cancel_url: "http://localhost:3000/cancelled",
+      success_url: "https://plants-a-plenty.vercel.app/success",
+      cancel_url: "https://plants-a-plenty.vercel.app/cancelled",
     })
 
-    //console.log(session)
+    console.log(session)
 
     if (!session.url) {
       return NextResponse.json("No session URL", { status: 500 })
     }
 
-    //console.log(session.url)
+    console.log(session.url)
 
     //return NextResponse.redirect(session.url)
     return NextResponse.json(session, { status: 200 })

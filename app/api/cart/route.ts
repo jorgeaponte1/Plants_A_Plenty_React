@@ -48,74 +48,11 @@ export async function DELETE(req: Request) {
     return new NextResponse("No user found", { status: 404 })
   }
 
-  const body = await req.json()
-
-  const product = await prisma.product.findUnique({
-    where: { id: body.id as string },
-  })
-
-  if (!product) {
-    return new NextResponse(`Product not found with id ${body.id}`, {
-      status: 404,
-    })
-  }
-
-  const updatedCart = user.cart.filter(item => item.productId !== product.id)
-
+  // Need to clear the user's cart
   await prisma.user.update({
     where: { id: user.id },
-    data: { cart: { set: updatedCart } },
+    data: { cart: { set: [] } },
   })
 
-  return new NextResponse("Item removed from cart", { status: 200 })
-  // return res.status(200).json({ message: "Item removed from cart", user })
-}
-
-export async function POST(req: Request) {
-  const session = await getServerSession(authOptions)
-  if (!session) {
-    return new NextResponse("Not authorized", { status: 401 })
-  }
-
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: { cart: true },
-  })
-
-  if (!user) {
-    return new NextResponse("No user found", { status: 404 })
-  }
-
-  const body = await req.json()
-
-  const product = await prisma.product.findUnique({
-    where: { id: body.id as string },
-  })
-
-  if (!product) {
-    return new NextResponse(`Product not found with id ${body.id}`, {
-      status: 404,
-    })
-  }
-
-  const cartItem = user.cart.find(item => item.productId === product.id)
-
-  if (cartItem) {
-    // Update the cart item's quantity in the database
-    await prisma.cartItem.update({
-      where: { id: cartItem.id },
-      data: { quantity: cartItem.quantity + 1 },
-    })
-  } else {
-    // Add a new item to the user's cart in the database
-    await prisma.cartItem.create({
-      data: {
-        userId: user.id,
-        productId: product.id,
-        quantity: 1,
-      },
-    })
-  }
-  return new NextResponse("Item added to cart", { status: 200 })
-  //return res.status(200).json({ message: "Item added to cart", user })
+  return new NextResponse("Cart cleared", { status: 200 })
 }

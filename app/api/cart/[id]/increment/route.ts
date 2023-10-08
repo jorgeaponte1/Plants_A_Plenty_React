@@ -1,9 +1,9 @@
-import prisma from "../../../../lib/prismadb"
+import prisma from "../../../../../lib/prismadb"
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]/route"
+import { authOptions } from "../../../auth/[...nextauth]/route"
 import { NextResponse } from "next/server"
 
-export async function PATCH(req: Request) {
+export async function PATCH(req: Request, context: { params: { id: String } }) {
   // Get the user session
   const session = await getServerSession(authOptions)
 
@@ -21,15 +21,15 @@ export async function PATCH(req: Request) {
     return new NextResponse("User not found", { status: 404 })
   }
 
-  const body = await req.json()
+  const { id } = context.params
 
   // Fetch the product using the provided ID
   const product = await prisma.product.findUnique({
-    where: { id: body.id as string },
+    where: { id: id as string },
   })
 
   if (!product) {
-    return new NextResponse(`Product not found with id ${body.id}`, {
+    return new NextResponse(`Product not found with id ${id}`, {
       status: 404,
     })
   }
@@ -37,20 +37,13 @@ export async function PATCH(req: Request) {
   // Check the user's cart to see if the product exists and has a quantity greater than 1
   if (user.cart) {
     const cartItem = user.cart.find(item => item.productId === product.id)
-    if (cartItem && cartItem.quantity > 1) {
+    if (cartItem && cartItem.quantity > 0) {
       await prisma.cartItem.update({
         where: { id: cartItem.id },
-        data: { quantity: cartItem.quantity - 1 },
-      })
-    } else if (cartItem && cartItem.quantity === 1) {
-      await prisma.cartItem.delete({
-        where: { id: cartItem.id },
+        data: { quantity: cartItem.quantity + 1 },
       })
     }
   }
 
-  // In a real-world scenario, you might also want to notify other parts of your application when the cart is updated.
-
   return new NextResponse("Item quantity updated", { status: 200 })
-  // return res.status(200).json({ message: "Item quantity updated" })
 }

@@ -17,6 +17,7 @@ import { CartItem } from "@/lib/types"
 import plantImages from "@/lib/plantImages"
 
 import Image from "next/image"
+import { useSession } from "next-auth/react"
 
 const localImagesMap: { [key: string]: string } = plantImages.reduce<{
   [key: string]: string
@@ -27,10 +28,12 @@ const localImagesMap: { [key: string]: string } = plantImages.reduce<{
 
 function SideCart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const session = useSession()
 
   useEffect(() => {
     async function fetchProducts() {
       try {
+        // if (session.status === "authenticated") {
         const res = await fetch("/api/cart")
         const data = await res.json()
         const updatedCartItems = data.map((item: CartItem) => ({
@@ -41,6 +44,7 @@ function SideCart() {
           },
         }))
         setCartItems(updatedCartItems)
+        // }
       } catch (error) {
         console.error("Failed to fetch products:", error)
       }
@@ -53,6 +57,27 @@ function SideCart() {
     (acc, item) => acc + item.product.price * item.quantity,
     0
   )
+
+  const submitOrder = async (e: any) => {
+    e.preventDefault()
+    const response = await fetch("/api/checkout-sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    })
+
+    if (!response.ok) {
+      throw new Error("Server responded with a non-OK status")
+    }
+
+    const data = await response.json()
+    const { url } = data
+
+    console.log(url)
+    window.location.assign(url)
+  }
 
   return (
     <Sheet>
@@ -108,7 +133,10 @@ function SideCart() {
               <div>${cartSubtotal.toFixed(2)}</div>
             </div>
             <SheetClose asChild>
-              <button className="bg-[#222] w-full box-border text-white cursor-pointer inline-block text-[25px] font-bold leading-normal max-w-none min-h-[60px] min-w-[10px] overflow-hidden relative text-center normal-case select-none touch-manipulation m-0 pt-[9px] pb-2 px-5 border-none hover:opacity-75 focus:opacity-30">
+              <button
+                className="bg-[#222] w-full box-border text-white cursor-pointer inline-block text-[25px] font-bold leading-normal max-w-none min-h-[60px] min-w-[10px] overflow-hidden relative text-center normal-case select-none touch-manipulation m-0 pt-[9px] pb-2 px-5 border-none hover:opacity-75 focus:opacity-30"
+                onClick={submitOrder}
+              >
                 Checkout
               </button>
             </SheetClose>

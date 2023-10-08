@@ -9,7 +9,7 @@ export default function QuantityButtons({
   quantity: number
 }) {
   const incrementItem = async () => {
-    const res = await fetch(`/api/cart/increment`, {
+    const res = await fetch(`/api/cart/${id}/increment`, {
       method: "PATCH",
       body: JSON.stringify({ id }),
       headers: {
@@ -21,7 +21,7 @@ export default function QuantityButtons({
   }
 
   const decrementItem = async () => {
-    const res = await fetch(`/api/cart/decrement`, {
+    const res = await fetch(`/api/cart/${id}/decrement`, {
       method: "PATCH",
       body: JSON.stringify({ id }),
       headers: {

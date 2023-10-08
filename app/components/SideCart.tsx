@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/app/components/ui/sheet"
-import { BsCart2 } from "react-icons/bs"
+import { BsCart2, BsTrash2 } from "react-icons/bs"
 import React, { useEffect, useState } from "react"
 import QuantityButtons from "./QuantityButtons"
 import { CartItem } from "@/lib/types"
@@ -79,6 +79,19 @@ function SideCart() {
     window.location.assign(url)
   }
 
+  const deleteItem = async (id: string) => {
+    const response = await fetch(`/api/cart/${id}`, {
+      method: "DELETE",
+    })
+
+    if (!response.ok) {
+      throw new Error("Server responded with a non-OK status")
+    }
+
+    const data = await response.json()
+    console.log(data)
+  }
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -108,13 +121,19 @@ function SideCart() {
                 alt={item.product.name}
               />
               <div className="flex items-end flex-col">
-                <div className="text-2xl font-semibold">
+                <div className="sm:text-2xl text-xl font-semibold">
                   {item.product.name}
                 </div>
                 <div>Price</div>
-                <div className="font-bold pb-6">
+                <div className="font-bold pb-4">
                   ${item.product.price.toFixed(2)}
                 </div>
+                <button
+                  className="pb-2"
+                  onClick={() => deleteItem(item.product.id)}
+                >
+                  <BsTrash2 className="w-5 h-5" />
+                </button>
                 <div className="pb-1">Quantity</div>
                 <div className="flex flex-row text-center items-center justify-evenly border-2 rounded border-gray-200 w-28 h-8">
                   <QuantityButtons

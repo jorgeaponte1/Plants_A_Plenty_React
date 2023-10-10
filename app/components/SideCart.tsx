@@ -18,6 +18,7 @@ import plantImages from "@/lib/plantImages"
 
 import Image from "next/image"
 import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 const localImagesMap: { [key: string]: string } = plantImages.reduce<{
   [key: string]: string
@@ -29,6 +30,7 @@ const localImagesMap: { [key: string]: string } = plantImages.reduce<{
 function SideCart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const session = useSession()
+  const router = useRouter()
 
   useEffect(() => {
     async function fetchProducts() {
@@ -51,7 +53,7 @@ function SideCart() {
     }
 
     fetchProducts()
-  }, [])
+  }, [cartItems])
 
   const cartSubtotal = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
@@ -75,7 +77,7 @@ function SideCart() {
     const data = await response.json()
     const { url } = data
 
-    console.log(url)
+    //console.log(url)
     window.location.assign(url)
   }
 
@@ -88,8 +90,11 @@ function SideCart() {
       throw new Error("Server responded with a non-OK status")
     }
 
-    const data = await response.json()
-    console.log(data)
+    //const data = await response.json()
+    //console.log(data)
+    // create a way to refresh the cartItem state and remove the item from the cart
+    setCartItems(cartItems.filter(item => item.product.id !== id))
+    router.refresh()
   }
 
   return (

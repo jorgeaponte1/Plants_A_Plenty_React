@@ -34,13 +34,13 @@ export async function POST(req: NextRequest) {
       cancel_url: "https://plants-a-plenty.vercel.app/cancelled",
     })
 
-    console.log(session)
+    //console.log(session)
 
     if (!session.url) {
       return NextResponse.json("No session URL", { status: 500 })
     }
 
-    console.log(session.url)
+    //console.log(session.url)
 
     //return NextResponse.redirect(session.url)
     return NextResponse.json(session, { status: 200 })

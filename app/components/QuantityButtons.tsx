@@ -16,7 +16,7 @@ export default function QuantityButtons({
         "Content-Type": "application/json",
       },
     })
-    const data = await res.json()
+    // const data = await res.json()
     // console.log(data)
   }
 
@@ -28,7 +28,7 @@ export default function QuantityButtons({
         "Content-Type": "application/json",
       },
     })
-    const data = await res.json()
+    // const data = await res.json()
     // console.log(data)
   }
 

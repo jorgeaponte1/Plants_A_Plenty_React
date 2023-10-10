@@ -17,6 +17,9 @@ const Success = () => {
         })
       }
 
+      // set timeout to allow the cart to be deleted before redirecting
+      // await new Promise(resolve => setTimeout(resolve, 500))
+
       router.push("/")
       toast.success("Order placed successfully!", {
         id: "success-toast",
